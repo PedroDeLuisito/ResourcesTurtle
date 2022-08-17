@@ -11,7 +11,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems {
     public  static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TurtleResources.Mod_ID);
 
+
+    //Gold Turtle Egg
     public static final RegistryObject<Item> GOLD_TURTLE_EGG = ITEMS.register("gold_turtle_egg",
+            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+
+    //Redstone Turtle Egg
+    public static final RegistryObject<Item> REDSTONE_TURTLE_EGG = ITEMS.register("redstone_turtle_egg",
             ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
 
     public static void register(IEventBus eventBus){

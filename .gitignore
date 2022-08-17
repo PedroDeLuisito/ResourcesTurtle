@@ -3,28 +3,3 @@
 .idea
 build
 run
-run/logs/2022-08-17-1.log.gz
-run/logs/2022-08-17-2.log.gz
-run/logs/2022-08-17-3.log.gz
-run/logs/2022-08-17-4.log.gz
-run/logs/debug-1.log.gz
-run/logs/debug-2.log.gz
-run/logs/debug-3.log.gz
-run/logs/debug-4.log.gz
-run/logs/debug-5.log.gz
-run/logs/debug.log
-run/logs/latest.log
-run/saves/New World/advancements/380df991-f603-344c-a090-369bad2a924a.json
-run/saves/New World/data/raids.dat
-run/saves/New World/DIM-1/data/raids.dat
-run/saves/New World/DIM1/data/raids_end.dat
-run/saves/New World/level.dat
-run/saves/New World/level.dat_old
-run/saves/New World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat
-run/saves/New World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old
-run/saves/New World/region/r.-1.-1.mca
-run/saves/New World/region/r.-1.0.mca
-run/saves/New World/region/r.0.-1.mca
-run/saves/New World/region/r.0.0.mca
-run/saves/New World/stats/380df991-f603-344c-a090-369bad2a924a.json
-run/usercache.json
