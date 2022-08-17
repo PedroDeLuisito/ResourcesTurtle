@@ -1,5 +1,6 @@
 package com.pedrodeluisito.rturtle;
 
+import com.pedrodeluisito.rturtle.block.ModBlocks;
 import com.pedrodeluisito.rturtle.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -34,6 +35,7 @@ public class TurtleResources
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading

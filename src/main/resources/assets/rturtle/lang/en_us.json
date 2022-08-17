@@ -1,5 +1,7 @@
 {
   "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
 
+  "block.rturtle.infuser" : "Infuser",
+
   "itemGroup.TurtleResourcesTab" : "Turtle Resources"
 }
