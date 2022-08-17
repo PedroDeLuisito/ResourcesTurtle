@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rturtle:item/gold_turtleegg"
+    "layer0": "rturtle:item/redstone_turtle_egg"
   }
 }

@@ -1,9 +1,7 @@
 {
-<<<<<<< HEAD
+
   "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
-=======
-  "item.rturtle.gold_turtleegg" : "Gold Turtle Egg",
->>>>>>> a5caeca8473b14e1c2d4316053842a72b746cb4d
+  "item.rturtle.redstone_turtle_egg" : "Redstone Turtle Egg",
 
   "itemGroup.TurtleResourcesTab" : "Turtle Resources"
 }
