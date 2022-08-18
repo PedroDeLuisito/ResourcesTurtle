@@ -1,0 +1,17 @@
+{
+  "type": "rturtle:infuser",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "output" : {
+    "item": "minecraft:redstone_ore"
+  }
+}

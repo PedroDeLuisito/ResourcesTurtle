@@ -7,5 +7,7 @@
 
   "block.rturtle.infuser" : "Infuser",
 
-  "itemGroup.TurtleResourcesTab" : "Turtle Resources"
+  "itemGroup.TurtleResourcesTab" : "Turtle Resources",
+
+  "screen.rturtle.infuser" : "Infuser"
 }

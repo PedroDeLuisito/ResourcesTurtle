@@ -1,9 +1,14 @@
 package com.pedrodeluisito.rturtle;
 
 import com.pedrodeluisito.rturtle.block.ModBlocks;
+import com.pedrodeluisito.rturtle.container.ModContainers;
+import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
 import com.pedrodeluisito.rturtle.item.ModItems;
+import com.pedrodeluisito.rturtle.screen.InfuserScreen;
+import com.pedrodeluisito.rturtle.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,6 +41,9 @@ public class TurtleResources
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModTileEntities.register(eventBus);
+        ModContainers.register(eventBus);
+        ModRecipeTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -58,6 +66,8 @@ public class TurtleResources
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
+        ScreenManager.registerFactory(ModContainers.INFUSER_CONTAINER.get(),
+                InfuserScreen::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

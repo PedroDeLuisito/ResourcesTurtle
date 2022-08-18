@@ -1,6 +1,7 @@
 package com.pedrodeluisito.rturtle.block;
 
 import com.pedrodeluisito.rturtle.TurtleResources;
+import com.pedrodeluisito.rturtle.block.custom.InfuserBlock;
 import com.pedrodeluisito.rturtle.item.ModItemGroup;
 import com.pedrodeluisito.rturtle.item.ModItems;
 import net.minecraft.block.AbstractBlock;
@@ -22,9 +23,7 @@ public class ModBlocks {
             = DeferredRegister.create(ForgeRegistries.BLOCKS, TurtleResources.Mod_ID);
 
     public static final RegistryObject<Block> INFUSER = registerBlock("infuser",
-            () -> new Block(AbstractBlock.Properties.create(Material.IRON)
-                    .harvestLevel(2)
-                    .hardnessAndResistance(5f)));
+            () -> new InfuserBlock(AbstractBlock.Properties.create(Material.IRON)));
 
 
 
