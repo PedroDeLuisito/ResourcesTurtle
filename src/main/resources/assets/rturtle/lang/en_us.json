@@ -1,7 +1,14 @@
 {
-  "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
-
   "block.rturtle.infuser" : "Infuser",
+
+  "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
+  "item.rturtle.redstone_turtle_egg" : "Redstone Turtle Egg",
+  "item.rturtle.coal_turtle_egg" : "Coal Turtle Egg",
+  "item.rturtle.gravel_turtle_egg" : "Gravel Turtle Egg",
+  "item.rturtle.rainbow_turtle_egg" : "Rainbow Turtle Egg",
+  "item.rturtle.rocky_turtle_egg" : "Rocky Turtle Egg",
+  "item.rturtle.woody_turtle_egg" : "Woody Turtle Egg",
+  "item.rturtle.zombie_turtle_egg" : "Zombie Turtle Egg",
 
   "itemGroup.TurtleResourcesTab" : "Turtle Resources"
 }
