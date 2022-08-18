@@ -1,6 +1,8 @@
 package com.pedrodeluisito.rturtle.item;
 
 import com.pedrodeluisito.rturtle.TurtleResources;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,6 +21,17 @@ public class ModItems {
     //Redstone Turtle Egg
     public static final RegistryObject<Item> REDSTONE_TURTLE_EGG = ITEMS.register("redstone_turtle_egg",
             ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+
+    // ARMOR
+    public static final RegistryObject<Item> TURTLE_BOOTS = ITEMS.register("turtle_boots",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.FEET,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> TURTLE_CHESTPLATE = ITEMS.register("turtle_chestplate",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.CHEST,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> TURTLE_LEGGINGS = ITEMS.register("turtle_leggings",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.LEGS,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

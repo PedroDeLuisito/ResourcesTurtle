@@ -1,8 +1,11 @@
 {
   "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
+  "item.rturtle.redstone_turtle_egg" : "Redstone Turtle Egg",
+  "item.rturtle.turtle_chestplate": "Turtle Chestplate",
+  "item.rturtle.turtle_leggings" : "Turtle Leggings",
+  "item.rturtle.turtle_boots" : "Turtle Boots",
 
   "block.rturtle.infuser" : "Infuser",
-  "item.rturtle.redstone_turtle_egg" : "Redstone Turtle Egg",
 
   "itemGroup.TurtleResourcesTab" : "Turtle Resources"
 }
