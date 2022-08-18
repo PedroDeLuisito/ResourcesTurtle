@@ -4,6 +4,9 @@
   "item.rturtle.turtle_chestplate": "Turtle Chestplate",
   "item.rturtle.turtle_leggings" : "Turtle Leggings",
   "item.rturtle.turtle_boots" : "Turtle Boots",
+  "item.rturtle.stone_infused_water" : "Stone Infused Water",
+  "item.rturtle.wood_infused_water": "Wood Infused Water",
+  "item.rturtle.dye_infused_water" : "Dye Infused Water",
 
   "block.rturtle.infuser" : "Infuser",
 

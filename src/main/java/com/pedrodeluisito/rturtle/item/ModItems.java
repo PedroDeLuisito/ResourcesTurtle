@@ -33,6 +33,14 @@ public class ModItems {
             ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.LEGS,
                     new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
 
+    // Custom Fluid
+    public static final RegistryObject<Item> STONE_INFUSED_WATER = ITEMS.register("stone_infused_water",
+            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> WOOD_INFUSED_WATER = ITEMS.register("wood_infused_water",
+            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> DYE_INFUSED_WATER = ITEMS.register("dye_infused_water",
+            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

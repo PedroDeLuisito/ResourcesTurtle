@@ -8,10 +8,10 @@
       "item": "minecraft:blaze_powder"
     },
     {
-      "item": "minecraft:stone"
+      "tag": "forge:dyes"
     }
   ],
   "output" : {
-    "item": "rturtle:stone_infused_water"
+    "item": "rturtle:dye_infused_water"
   }
 }

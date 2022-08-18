@@ -8,10 +8,10 @@
       "item": "minecraft:blaze_powder"
     },
     {
-      "item": "minecraft:stone"
+      "tag": "minecraft:logs"
     }
   ],
   "output" : {
-    "item": "rturtle:stone_infused_water"
+    "item": "rturtle:wood_infused_water"
   }
 }
