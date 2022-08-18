@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rturtle:item/gravel_turtle_egg"
+  }
+}
