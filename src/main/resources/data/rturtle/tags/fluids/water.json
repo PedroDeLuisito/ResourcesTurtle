@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "rturtle:stone_infused_water_flowing",
+    "rturtle:stone_infused_water_fluids",
+
+    "rturtle:wood_infused_water_flowing",
+    "rturtle:wood_infused_water_fluids"
+  ]
+}

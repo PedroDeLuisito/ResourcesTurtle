@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rturtle:item/stone_infused_water"
-  }
-}

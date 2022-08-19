@@ -1,8 +1,10 @@
 package com.pedrodeluisito.rturtle.item;
 
 import com.pedrodeluisito.rturtle.TurtleResources;
+import com.pedrodeluisito.rturtle.fluid.ModFluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -33,12 +35,13 @@ public class ModItems {
                     new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
 
     // Custom Fluid
-    public static final RegistryObject<Item> STONE_INFUSED_WATER = ITEMS.register("stone_infused_water",
-            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
-    public static final RegistryObject<Item> WOOD_INFUSED_WATER = ITEMS.register("wood_infused_water",
-            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
-    public static final RegistryObject<Item> DYE_INFUSED_WATER = ITEMS.register("dye_infused_water",
-            ()-> new Item (new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> STONE_INFUSED_WATER_BUCKET = ITEMS.register("stone_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.STONE_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> WOOD_INFUSED_WATER_BUCKET = ITEMS.register("wood_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.WOOD_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> DYE_INFUSED_WATER_BUCKET = ITEMS.register("dye_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.DYE_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
