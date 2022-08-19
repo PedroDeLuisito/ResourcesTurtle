@@ -1,5 +1,6 @@
 package com.pedrodeluisito.rturtle.tileentity;
 
+import com.pedrodeluisito.rturtle.container.InfuserContainer;
 import com.pedrodeluisito.rturtle.data.recipes.InfuserRecipe;
 import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
 import net.minecraft.block.BlockState;
@@ -23,6 +24,8 @@ public class InfuserTile extends TileEntity implements ITickableTileEntity {
 
     private final ItemStackHandler itemHandler = createHandler();
     private final LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
+    private InfuserContainer container;
+    private int currentSmeltTime = 0;
 
     public InfuserTile(TileEntityType<?> tileEntityTypeIn) {
         super(tileEntityTypeIn);
@@ -42,6 +45,10 @@ public class InfuserTile extends TileEntity implements ITickableTileEntity {
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("inv", itemHandler.serializeNBT());
         return super.write(compound);
+    }
+
+    public void setContainer(InfuserContainer iContainer) {
+        this.container = iContainer;
     }
 
     private ItemStackHandler createHandler() {
@@ -96,6 +103,7 @@ public class InfuserTile extends TileEntity implements ITickableTileEntity {
         Optional<InfuserRecipe> recipe = world.getRecipeManager()
                 .getRecipe(ModRecipeTypes.INFUSER_RECIPE, inv, world);
 
+
         recipe.ifPresent(iRecipe ->  {
             ItemStack output = iRecipe.getRecipeOutput();
             craftTheItem(output);
@@ -104,11 +112,29 @@ public class InfuserTile extends TileEntity implements ITickableTileEntity {
     }
 
     private void craftTheItem(ItemStack output) {
+        this.timeBeforeCraft();
+        if (this.container != null) {
+            this.container.setInfusing(true);
+            System.out.println(currentSmeltTime);
+            if (currentSmeltTime != 100) {
+                currentSmeltTime++;
+                return;
+            }
+            currentSmeltTime = 0;
+            this.container.setInfusing(false);
+        } else {
+            System.out.println("NULLLLLLLLLLLLLL");
+        }
         itemHandler.extractItem(0,1,false);
         itemHandler.extractItem(1,1,false);
         itemHandler.extractItem(2,1,false);
         itemHandler.insertItem(0, output, false);
     }
+
+    public void timeBeforeCraft() {
+
+    }
+
 
     @Override
     public void tick() {

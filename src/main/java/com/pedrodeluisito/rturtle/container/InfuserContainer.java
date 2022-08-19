@@ -1,9 +1,13 @@
 package com.pedrodeluisito.rturtle.container;
 
 import com.pedrodeluisito.rturtle.block.ModBlocks;
+import com.pedrodeluisito.rturtle.screen.InfuserScreen;
+import com.pedrodeluisito.rturtle.tileentity.InfuserTile;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.FurnaceContainer;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,12 +20,15 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 import javax.annotation.Nullable;
+import java.lang.ref.Reference;
 
 public class InfuserContainer extends Container {
 
     private final TileEntity tileEntity;
     private final PlayerEntity playerEntity;
     private final IItemHandler playerInventory;
+    private InfuserScreen screen;
+    private boolean infuse = false;
 
     public InfuserContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory,
                             PlayerEntity player) {
@@ -43,6 +50,7 @@ public class InfuserContainer extends Container {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerEntity) {
+        ((InfuserTile)this.tileEntity).setContainer(this);
         return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()),
                 playerEntity, ModBlocks.INFUSER.get());
     }
@@ -71,6 +79,24 @@ public class InfuserContainer extends Container {
 
         topRow += 58;
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
+    }
+
+    public void setScreen(InfuserScreen iScreen){
+        this.screen = iScreen;
+    }
+
+    public void setInfusing(boolean inf) {
+        this.infuse = inf;
+        if (this.screen == null) {
+
+            System.out.println("SCREEN NULLLLLLLLLLLL");
+            return;
+        }
+        this.screen.setAnimate(inf);
+    }
+
+    public boolean getInfuse() {
+        return this.infuse;
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

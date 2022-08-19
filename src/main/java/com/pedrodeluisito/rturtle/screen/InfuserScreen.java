@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pedrodeluisito.rturtle.TurtleResources;
 import com.pedrodeluisito.rturtle.container.InfuserContainer;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -13,8 +14,15 @@ public class InfuserScreen extends ContainerScreen<InfuserContainer> {
     private final ResourceLocation GUI = new ResourceLocation(TurtleResources.Mod_ID,
             "textures/gui/infuser_gui.png");
 
+    private int animationPx = 0;
+    private boolean animate = false;
+
     public InfuserScreen(InfuserContainer p_i51105_1_, PlayerInventory p_i51105_2_, ITextComponent p_i51105_3_) {
         super(p_i51105_1_, p_i51105_2_, p_i51105_3_);
+    }
+
+    public void setAnimate(boolean anim) {
+        this.animate = anim;
     }
 
     @Override
@@ -22,6 +30,7 @@ public class InfuserScreen extends ContainerScreen<InfuserContainer> {
         this.renderBackground(matrixStack);
         super.render(matrixStack,mouseX,mouseY,partialTicks);
         this.renderHoveredTooltip(matrixStack,mouseX,mouseY);
+        this.getContainer().setScreen(this);
     }
 
     @Override
@@ -31,6 +40,11 @@ public class InfuserScreen extends ContainerScreen<InfuserContainer> {
         int i = this.guiLeft;
         int j = this.guiTop;
         this.blit(matrixStack,i,j,0,0,this.xSize,this.ySize);
-
+        if (this.getContainer().getInfuse()) {
+            if (animationPx > 84) { animationPx=0; }
+            this.blit(matrixStack, i + 83, j + 47 - animationPx/3, 177, 28 - animationPx/3, 12, 28);
+            animationPx++;
+        }
     }
+
 }
