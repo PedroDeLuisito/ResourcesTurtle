@@ -1,58 +1,60 @@
 package com.pedrodeluisito.rturtle.container;
 
 import com.pedrodeluisito.rturtle.block.ModBlocks;
-import com.pedrodeluisito.rturtle.screen.InfuserScreen;
-import com.pedrodeluisito.rturtle.tileentity.InfuserTile;
-import net.minecraft.client.Minecraft;
+import com.pedrodeluisito.rturtle.tileentity.InfuserBlockTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.FurnaceContainer;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntArray;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-import javax.annotation.Nullable;
-import java.lang.ref.Reference;
 
-public class InfuserContainer extends Container {
-
-    private final TileEntity tileEntity;
+public class InfuserBlockContainer extends Container {
+    private final InfuserBlockTileEntity tileEntity;
     private final PlayerEntity playerEntity;
     private final IItemHandler playerInventory;
-    private InfuserScreen screen;
-    private boolean infuse = false;
 
-    public InfuserContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory,
-                            PlayerEntity player) {
-        super(ModContainers.INFUSER_CONTAINER.get(), windowId);
-        this.tileEntity = world.getTileEntity(pos);
-        playerEntity = player;
+    private IIntArray fields;
+
+
+    public InfuserBlockContainer (int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
+        this(windowId, world, pos, playerInventory, player, new IntArray(5));
+    }
+
+    public InfuserBlockContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, IIntArray fields) {
+        super(ModContainers.INFUSER_BLOCK_CONTAINER.get(), windowId);
+        this.tileEntity = (InfuserBlockTileEntity) world.getTileEntity(pos);
+        this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
-
         layoutPlayerInventorySlots(8,86);
+        this.fields = fields;
+
+        this.trackIntArray(this.fields);
 
         if(tileEntity != null) {
-            tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent( h -> {
-                addSlot(new SlotItemHandler(h,0,61,31));
-                addSlot(new SlotItemHandler(h,1,80,53));
-                addSlot(new SlotItemHandler(h,2,99,31));
+            tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
+                addSlot(new SlotItemHandler(h, 0, 61, 31));
+                addSlot(new SlotItemHandler(h, 1, 80, 53));
+                addSlot(new SlotItemHandler(h, 2, 99, 31));
             });
         }
     }
 
     @Override
-    public boolean canInteractWith(PlayerEntity playerEntity) {
-        ((InfuserTile)this.tileEntity).setContainer(this);
+    public boolean canInteractWith(PlayerEntity playerIn) {
         return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()),
-                playerEntity, ModBlocks.INFUSER.get());
+                playerIn, ModBlocks.INFUSER.get());
     }
 
     private int addSlotRange(IItemHandler handler, int index, int x, int y, int amount, int dx) {
@@ -81,22 +83,12 @@ public class InfuserContainer extends Container {
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
     }
 
-    public void setScreen(InfuserScreen iScreen){
-        this.screen = iScreen;
+    public boolean isSmelting() {
+        return this.fields.get(0) > 0;
     }
 
-    public void setInfusing(boolean inf) {
-        this.infuse = inf;
-        if (this.screen == null) {
-
-            System.out.println("SCREEN NULLLLLLLLLLLL");
-            return;
-        }
-        this.screen.setAnimate(inf);
-    }
-
-    public boolean getInfuse() {
-        return this.infuse;
+    public int smeltingTime() {
+        return this.fields.get(0);
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

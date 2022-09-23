@@ -39,7 +39,6 @@ public class InfuserRecipe implements IInfuserRecipe{
         this.output = output;
         this.recipeItems = recipeItems;
     }
-
     @Override
     public boolean matches(IInventory iInventory, World world) {
         if(recipeItems.get(0).test(iInventory.getStackInSlot(0))) {

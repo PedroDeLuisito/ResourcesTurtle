@@ -5,7 +5,7 @@ import com.pedrodeluisito.rturtle.container.ModContainers;
 import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
 import com.pedrodeluisito.rturtle.fluid.ModFluids;
 import com.pedrodeluisito.rturtle.item.ModItems;
-import com.pedrodeluisito.rturtle.screen.InfuserScreen;
+import com.pedrodeluisito.rturtle.screen.InfuserBlockScreen;
 import com.pedrodeluisito.rturtle.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -70,8 +70,8 @@ public class TurtleResources
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
-        ScreenManager.registerFactory(ModContainers.INFUSER_CONTAINER.get(),
-                InfuserScreen::new);
+        ScreenManager.registerFactory(ModContainers.INFUSER_BLOCK_CONTAINER.get(),
+                InfuserBlockScreen::new);
 
         // RENDER STONE_INFUSED_WATER
         RenderTypeLookup.setRenderLayer(ModFluids.STONE_INFUSED_WATER_FLUID.get(), RenderType.getTranslucent());

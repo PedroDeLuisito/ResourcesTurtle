@@ -15,14 +15,13 @@ public class ModContainers {
     public static DeferredRegister<ContainerType<?>> CONTAINERS
             = DeferredRegister.create(ForgeRegistries.CONTAINERS, TurtleResources.Mod_ID);
 
-
-    public static final RegistryObject<ContainerType<InfuserContainer>> INFUSER_CONTAINER
-            = CONTAINERS.register("infuser_container",
-            () -> IForgeContainerType.create(((windowId, inv, data) -> {
+    public static final RegistryObject<ContainerType<InfuserBlockContainer>> INFUSER_BLOCK_CONTAINER
+            = CONTAINERS.register("infuser_block_container",
+            () -> IForgeContainerType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 World world = inv.player.getEntityWorld();
-                return new InfuserContainer(windowId, world, pos, inv, inv.player);
-            })));
+                return new InfuserBlockContainer(windowId, world, pos, inv, inv.player);
+    }));
 
     public static void register(IEventBus eventBus) {
         CONTAINERS.register(eventBus);

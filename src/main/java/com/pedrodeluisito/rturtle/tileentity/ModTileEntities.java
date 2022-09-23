@@ -13,9 +13,9 @@ public class ModTileEntities {
     public static DeferredRegister<TileEntityType<?>> TILE_ENTITIES =
             DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, TurtleResources.Mod_ID);
 
-    public static RegistryObject<TileEntityType<InfuserTile>> INFUSER_TILE =
-            TILE_ENTITIES.register("infuser_tile", () -> TileEntityType.Builder.create(
-                    InfuserTile::new, ModBlocks.INFUSER.get()).build(null));
+    public static RegistryObject<TileEntityType<InfuserBlockTileEntity>> INFUSER_BLOCK_TILE_ENTITY =
+            TILE_ENTITIES.register("infuser_block_tile_entity", () -> TileEntityType.Builder.create(
+                    InfuserBlockTileEntity::new, ModBlocks.INFUSER.get()).build(null));
 
     public static void register(IEventBus eventbus) {
         TILE_ENTITIES.register(eventbus);
