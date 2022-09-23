@@ -4,18 +4,15 @@ import com.pedrodeluisito.rturtle.data.recipes.InfuserRecipe;
 import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.AirItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.IIntArray;
-import net.minecraft.util.IntArray;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -23,8 +20,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.WriteAbortedException;
 import java.util.Optional;
 
 public class InfuserBlockTileEntity extends TileEntity implements ITickableTileEntity {
@@ -39,9 +34,6 @@ public class InfuserBlockTileEntity extends TileEntity implements ITickableTileE
 
     protected int timer;
     private int infuserSmeltTime;
-    private int smeltTime;
-    private int totalSmeltTime = 100;
-    private int recipesUsed;
     private boolean wasSmelting = false;
     private ItemStack output = null;
     public final IIntArray fields;
@@ -191,6 +183,7 @@ public class InfuserBlockTileEntity extends TileEntity implements ITickableTileE
                 this.wasSmelting = false;
                 itemHandler.extractItem(WATER,1,false);
                 itemHandler.insertItem(WATER,this.output,false);
+                world.playSound(null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS,1,1);
                 this.output = null;
             }
 
