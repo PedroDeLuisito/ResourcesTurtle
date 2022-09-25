@@ -22,7 +22,7 @@ public class ModBlocks {
             = DeferredRegister.create(ForgeRegistries.BLOCKS, TurtleResources.Mod_ID);
 
     public static final RegistryObject<Block> INFUSER = registerBlock("infuser",
-            () -> new InfuserBlock(AbstractBlock.Properties.create(Material.IRON)));
+            () -> new InfuserBlock(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(5)));
 
 
 

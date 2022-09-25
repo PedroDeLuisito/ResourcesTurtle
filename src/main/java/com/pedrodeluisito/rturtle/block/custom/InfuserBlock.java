@@ -20,6 +20,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nullable;
 
@@ -53,6 +54,19 @@ public class InfuserBlock extends Block {
             }
         }
         return ActionResultType.SUCCESS;
+    }
+
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
+            worldIn.getTileEntity(pos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(
+                    stack -> {
+                        for (int i = 0; i < stack.getSlots(); i++) {
+                            spawnAsEntity(worldIn, pos, stack.getStackInSlot(i));
+                        }
+                    }
+            );
+        });
     }
 
     private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos, IIntArray fields) {
