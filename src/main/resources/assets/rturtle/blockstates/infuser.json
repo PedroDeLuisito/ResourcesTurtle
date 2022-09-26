@@ -1,5 +1,19 @@
 {
  "variants": {
-   "" : { "model": "rturtle:block/infuser"}
+   "facing=east" : {
+     "model": "rturtle:block/infuser",
+     "y": 90
+   },
+   "facing=north" : {
+     "model": "rturtle:block/infuser"
+   },
+   "facing=south" : {
+     "model": "rturtle:block/infuser",
+     "y": 180
+   },
+   "facing=west" : {
+     "model": "rturtle:block/infuser",
+     "y": 270
+   }
  }
 }
