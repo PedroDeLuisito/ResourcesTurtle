@@ -1,5 +1,6 @@
 package com.pedrodeluisito.rturtle.tileentity;
 
+import com.pedrodeluisito.rturtle.block.custom.InfuserBlock;
 import com.pedrodeluisito.rturtle.data.recipes.InfuserRecipe;
 import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
 import net.minecraft.block.BlockState;
@@ -7,6 +8,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -138,25 +140,6 @@ public class InfuserBlockTileEntity extends TileEntity implements ITickableTileE
         return super.getTileData();
     }
 
-    public void craft() {
-        Inventory inv = new Inventory(itemHandler.getSlots()) ;
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inv.setInventorySlotContents(i, itemHandler.getStackInSlot(i));
-        }
-        Optional<InfuserRecipe> recipe = world.getRecipeManager()
-                .getRecipe(ModRecipeTypes.INFUSER_RECIPE, inv, world);
-
-        if (recipe.isPresent()) {
-            ItemStack output = recipe.get().getRecipeOutput();
-            itemHandler.extractItem(0,1,false);
-            itemHandler.extractItem(1,1,false);
-            itemHandler.extractItem(2,1,false);
-            itemHandler.insertItem(0,output,false);
-            markDirty();
-        }
-
-    }
-
     @Override
     public void tick() {
         if(world.isRemote) {
@@ -176,6 +159,10 @@ public class InfuserBlockTileEntity extends TileEntity implements ITickableTileE
                 // On enleve l'item a smelt et le blaze powder
                 this.getItem(FUEL).shrink(1);
                 this.getItem(ITEM_INFUSER).shrink(1);
+//                this.getItem(WATER).shrink(1);
+//                itemHandler.insertItem(WATER,Items.BUCKET.getDefaultInstance(),false);
+                // Block state changement to LIT
+                this.world.setBlockState(pos, world.getBlockState(pos).with(InfuserBlock.LIT,this.isSmelting()),3);
             }
 
             // Si le temps de smelting est fini
@@ -185,6 +172,8 @@ public class InfuserBlockTileEntity extends TileEntity implements ITickableTileE
                 itemHandler.insertItem(WATER,this.output,false);
                 world.playSound(null, pos, SoundEvents.BLOCK_BUBBLE_COLUMN_BUBBLE_POP, SoundCategory.BLOCKS,1,1);
                 this.output = null;
+                // Block state changement to Non LIT
+                this.world.setBlockState(pos, world.getBlockState(pos).with(InfuserBlock.LIT,false),3);
             }
 
         } else {
