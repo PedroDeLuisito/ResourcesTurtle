@@ -22,9 +22,9 @@ public class ModBlocks {
             = DeferredRegister.create(ForgeRegistries.BLOCKS, TurtleResources.Mod_ID);
 
     public static final RegistryObject<Block> INFUSER = registerBlock("infuser",
-            () -> new Block(AbstractBlock.Properties.create(Material.ROCK)
+            () -> new Block(AbstractBlock.Properties.create(Material.IRON)
                     .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE).setRequiresTool()));
+                    .hardnessAndResistance(5f)));
 
     public static final RegistryObject<Block> NEST= registerBlock("nest",
             () -> new Block(AbstractBlock.Properties.create(Material.WOOD)
