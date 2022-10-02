@@ -33,5 +33,20 @@
   "item.rturtle.netherstar_turtle_egg" : "Netherstar Turtle Egg",
   "item.rturtle.wither_turtle_egg" : "Wither Turtle Egg",
 
-  "itemGroup.TurtleResourcesTab" : "Turtle Resources"
+  "item.rturtle.gold_turtle_egg" : "Gold Turtle Egg",
+  "item.rturtle.redstone_turtle_egg" : "Redstone Turtle Egg",
+  "item.rturtle.turtle_chestplate": "Turtle Chestplate",
+  "item.rturtle.turtle_leggings" : "Turtle Leggings",
+  "item.rturtle.turtle_boots" : "Turtle Boots",
+
+  "item.rturtle.stone_infused_water_bucket" : "Stone Infused Water",
+  "item.rturtle.wood_infused_water_bucket": "Wood Infused Water",
+  "item.rturtle.dye_infused_water_bucket" : "Dye Infused Water",
+  "item.rturtle.gold_infused_water_bucket" : "Gold Infused Water",
+
+  "fluid.rturtle.stone_infused_water_block" : "Stone Infused Water",
+
+  "itemGroup.TurtleResourcesTab" : "Turtle Resources",
+
+  "screen.rturtle.infuser" : "Infuser"
 }

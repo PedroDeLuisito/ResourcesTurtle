@@ -1,5 +1,13 @@
 {
  "variants": {
-   "" : { "model": "rturtle:block/infuser"}
- }
+      "facing=north,lit=false"  : { "model": "rturtle:block/infuser"},
+      "facing=east,lit=false"   : { "model": "rturtle:block/infuser", "y": 90},
+      "facing=south,lit=false"  : { "model": "rturtle:block/infuser", "y": 180},
+      "facing=west,lit=false"   : { "model": "rturtle:block/infuser", "y": 270},
+
+      "facing=north,lit=true"   : { "model": "rturtle:block/infuser_on"},
+      "facing=east,lit=true"    : { "model": "rturtle:block/infuser_on", "y": 90},
+      "facing=south,lit=true"   : { "model": "rturtle:block/infuser_on", "y": 180},
+      "facing=west,lit=true"    : { "model": "rturtle:block/infuser_on", "y": 270}
+    }
 }

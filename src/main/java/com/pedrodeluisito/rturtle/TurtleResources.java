@@ -1,11 +1,17 @@
 package com.pedrodeluisito.rturtle;
 
 import com.pedrodeluisito.rturtle.block.ModBlocks;
-//import com.pedrodeluisito.rturtle.entity.ModEntityTypes;
+import com.pedrodeluisito.rturtle.container.ModContainers;
+import com.pedrodeluisito.rturtle.data.recipes.ModRecipeTypes;
+import com.pedrodeluisito.rturtle.fluid.ModFluids;
 import com.pedrodeluisito.rturtle.item.ModItems;
-import com.pedrodeluisito.rturtle.tileentity.ModTileEntity;
+import com.pedrodeluisito.rturtle.screen.InfuserBlockScreen;
+import com.pedrodeluisito.rturtle.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,8 +44,10 @@ public class TurtleResources
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
-        ModTileEntity.register(eventBus);
-        //ModEntityTypes.register(eventBus);
+        ModTileEntities.register(eventBus);
+        ModContainers.register(eventBus);
+        ModRecipeTypes.register(eventBus);
+        ModFluids.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -62,6 +70,13 @@ public class TurtleResources
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
+        ScreenManager.registerFactory(ModContainers.INFUSER_BLOCK_CONTAINER.get(),
+                InfuserBlockScreen::new);
+
+        // RENDER STONE_INFUSED_WATER
+        RenderTypeLookup.setRenderLayer(ModFluids.STONE_INFUSED_WATER_FLUID.get(), RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(ModFluids.STONE_INFUSED_WATER_BLOCK.get(), RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(ModFluids.STONE_INFUSED_WATER_FLOWING.get(), RenderType.getTranslucent());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

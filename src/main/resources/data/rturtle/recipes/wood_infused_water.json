@@ -1,0 +1,17 @@
+{
+  "type": "rturtle:infuser",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "tag": "minecraft:logs"
+    }
+  ],
+  "output" : {
+    "item": "rturtle:wood_infused_water_bucket"
+  }
+}

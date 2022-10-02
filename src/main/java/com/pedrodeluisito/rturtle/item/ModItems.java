@@ -4,8 +4,12 @@ import com.pedrodeluisito.rturtle.TurtleResources;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.BucketItem;
+import net.minecraft.potion.EffectInstance;
+import com.pedrodeluisito.rturtle.fluid.ModFluids;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -167,6 +171,28 @@ public class ModItems {
 
 
 
+
+    // ARMOR
+    public static final RegistryObject<Item> TURTLE_BOOTS = ITEMS.register("turtle_boots",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.FEET,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> TURTLE_CHESTPLATE = ITEMS.register("turtle_chestplate",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.CHEST,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> TURTLE_LEGGINGS = ITEMS.register("turtle_leggings",
+            ()-> new ArmorItem(ModArmorMaterial.TURTLE, EquipmentSlotType.LEGS,
+                    new Item.Properties().group(ModItemGroup.TURTLE_GROUP)));
+
+    // Custom Fluid
+    public static final RegistryObject<Item> STONE_INFUSED_WATER_BUCKET = ITEMS.register("stone_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.STONE_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> WOOD_INFUSED_WATER_BUCKET = ITEMS.register("wood_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.WOOD_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+    public static final RegistryObject<Item> DYE_INFUSED_WATER_BUCKET = ITEMS.register("dye_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.DYE_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
+
+    public static final RegistryObject<Item> GOLD_INFUSED_WATER_BUCKET = ITEMS.register("gold_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.GOLD_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
