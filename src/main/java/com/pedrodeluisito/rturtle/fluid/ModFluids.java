@@ -87,6 +87,30 @@ public class ModFluids {
                     .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()));
 
 
+    // GOLD INFUSED WATER
+
+    public static final RegistryObject<FlowingFluid> GOLD_INFUSED_WATER_FLUID
+            = FLUIDS.register("gold_infused_water_fluid", () -> new ForgeFlowingFluid.Source(ModFluids.GOLD_INFUSER_WATER_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> GOLD_INFUSED_WATER_FLOWING
+            = FLUIDS.register("gold_infused_water_flowing", () -> new ForgeFlowingFluid.Flowing(ModFluids.GOLD_INFUSER_WATER_PROPERTIES));
+
+    public static final ForgeFlowingFluid.Properties GOLD_INFUSER_WATER_PROPERTIES = new ForgeFlowingFluid.Properties(
+            () -> GOLD_INFUSED_WATER_FLUID.get(), () -> GOLD_INFUSED_WATER_FLOWING.get(), FluidAttributes.builder(WATER_STILL_RL, WATER_FLOWING_RL)
+            .density(15).luminosity(2).viscosity(5)
+            .overlay(WATER_OVERLAY_RL)
+            .color(0xfffb23)).slopeFindDistance(4).levelDecreasePerBlock(2)
+            .block(() -> ModFluids.GOLD_INFUSED_WATER_BLOCK.get())
+            .bucket(() -> ModItems.GOLD_INFUSED_WATER_BUCKET.get());
+
+    public static final RegistryObject<FlowingFluidBlock> GOLD_INFUSED_WATER_BLOCK = ModBlocks.BLOCKS.register("gold_infused_water_block",
+            () -> new FlowingFluidBlock(() -> ModFluids.GOLD_INFUSED_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
+                    .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()));
+
+
+
+
+
+
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);

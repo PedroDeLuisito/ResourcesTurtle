@@ -42,6 +42,8 @@ public class ModItems {
     public static final RegistryObject<Item> DYE_INFUSED_WATER_BUCKET = ITEMS.register("dye_infused_water_bucket",
             ()-> new BucketItem( () -> ModFluids.DYE_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
 
+    public static final RegistryObject<Item> GOLD_INFUSED_WATER_BUCKET = ITEMS.register("gold_infused_water_bucket",
+            ()-> new BucketItem( () -> ModFluids.GOLD_INFUSED_WATER_FLUID.get(), new Item.Properties().maxStackSize(1).group(ModItemGroup.TURTLE_GROUP)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
