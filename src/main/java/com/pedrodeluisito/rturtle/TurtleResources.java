@@ -1,7 +1,9 @@
 package com.pedrodeluisito.rturtle;
 
 import com.pedrodeluisito.rturtle.block.ModBlocks;
+//import com.pedrodeluisito.rturtle.entity.ModEntityTypes;
 import com.pedrodeluisito.rturtle.item.ModItems;
+import com.pedrodeluisito.rturtle.tileentity.ModTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +38,8 @@ public class TurtleResources
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModTileEntity.register(eventBus);
+        //ModEntityTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading

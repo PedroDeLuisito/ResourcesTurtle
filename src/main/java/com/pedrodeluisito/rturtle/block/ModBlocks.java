@@ -26,6 +26,11 @@ public class ModBlocks {
                     .harvestLevel(2)
                     .harvestTool(ToolType.PICKAXE).setRequiresTool()));
 
+    public static final RegistryObject<Block> NEST= registerBlock("nest",
+            () -> new Block(AbstractBlock.Properties.create(Material.WOOD)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.AXE).setRequiresTool().hardnessAndResistance(3f)));
+
 
 
 
