@@ -45,6 +45,9 @@
   "item.rturtle.gold_infused_water_bucket" : "Gold Infused Water",
 
   "fluid.rturtle.stone_infused_water_block" : "Stone Infused Water",
+  "fluid.rturtle.wood_infused_water_block" : "Wood Infused Water",
+  "fluid.rturtle.dye_infused_water_block" : "Dye Infused Water",
+  "fluid.rturtle.gold_infused_water_block" : "Gold Infused Water",
 
   "itemGroup.TurtleResourcesTab" : "Turtle Resources",
 
